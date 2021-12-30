@@ -20,4 +20,6 @@ from hood import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('hood.urls')),
+    path('accounts/', include('registration.backends.simple.urls')),
+    path('^logout/$', views.WebsiteListView.as_view(), {"next_page": '/'}),
 ]
