@@ -7,19 +7,18 @@ def index(request):
 
 class HoodView(View):
     def get(self, request):
-        hoods = Hood.objects.all().order_by('-uploaded_on')
+        hood = NeighbourHood.objects.all().order_by('-uploaded_on')
         form = HoodForm()
 
         context = {
-            'hood_list':hood,
+            'hood':hood,
             'form':form,
         }
 
         return render(request, 'hood.html', context) 
 
     def post(self, request):
-        hoods = Hood.objects.all().order_by('-uploaded_on')
-        hood_of_day = Hood.objects.all().order_by('-uploaded_on').first()
+        hood = NeighbourHood.objects.all().order_by('-uploaded_on')
         form = HoodForm(request.POST, request.FILES)
 
         if form.is_valid():
@@ -32,7 +31,7 @@ class HoodView(View):
             new_hood.save()   
 
         context = {
-            'hood_list':hoods,
+            'hood':hood,
             'hood_of_day':hood_of_day,
             'form':form,
         }
