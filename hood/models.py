@@ -23,3 +23,4 @@ class Business(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     hood_id = models.ForeignKey(NeighbourHood, related_name = 'neighbourhood')
     business_email = models.EmailField()
+    uploaded_on = models.DateTimeField(auto_now_add=True)
