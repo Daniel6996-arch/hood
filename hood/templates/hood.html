@@ -4,4 +4,12 @@
 
 <h1>Welcome to the hood, Welcome to the Neighbourhood</h1>
 
+{% for hood in hood %}
+{% if hood %}
+<h1>{{ hood.hood_name }}</h1>
+{% else %}
+<h1>No hood available, please add your hood.</h1>
+{% endif %}
+{% endfor %}
+
 {% endblock %}
