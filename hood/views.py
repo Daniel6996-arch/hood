@@ -74,7 +74,7 @@ class BusinessView(View):
 
 class ProfileView(View):
     def get(self, request, pk):
-        profile = User.objects.get(pk=pk)
+        profile = UserProfile.objects.get(pk=pk)
         user = profile.user
         hood = NeighbourHood.objects.filter(admin = user).order_by('-uploaded_on')   
 
