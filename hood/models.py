@@ -12,15 +12,15 @@ class NeighbourHood(models.Model):
     uploaded_on = models.DateTimeField(auto_now_add=True)
 
 
-class User(models.Model):
-    name = models.OneToOneField(User, primary_key = True, verbose_name = 'user', related_name = 'profile', on_delete = models.CASCADE)
-    id = models.IntegerField()
-    #hood_id = models.ForeignKey(NeighbourHood,primary_key = True, verbose_name = 'user', related_name = 'neighbourhood', on_delete = models.CASCADE)   
+class UserProfile(models.Model):
+    name = models.OneToOneField(User, verbose_name = 'user', related_name = 'profile', on_delete = models.CASCADE)
+    id = models.IntegerField(primary_key = True, default=0)
+    hood = models.ForeignKey(NeighbourHood, on_delete = models.CASCADE, default=0)   
     email = models.EmailField()
 
 class Business(models.Model):
-    business_name = models.CharField(max_length = 120)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    #hood_id = models.ForeignKey(NeighbourHood, related_name = 'neighbourhood')
+    business_name = models.CharField(max_length = 120, primary_key = True)
+    user  = models.ForeignKey(User, on_delete = models.CASCADE)
+    hood = models.ForeignKey(NeighbourHood, related_name = 'neighbourhood', on_delete = models.CASCADE, default=0)
     business_email = models.EmailField()
     uploaded_on = models.DateTimeField(auto_now_add=True)

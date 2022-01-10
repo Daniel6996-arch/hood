@@ -6,7 +6,8 @@
 
 {% for hood in hood %}
 {% if hood %}
-<h1>{{ hood.hood_name }}</h1>
+<span><h1>{{ hood.hood_name }}</h1><p>Population {{ hood.occupants_count }}</p></span>
+<p>Last Updated {{ hood.uploaded_on }}</p>
 {% else %}
 <h1>No hood available, please add your hood.</h1>
 {% endif %}
