@@ -28,12 +28,7 @@ class UserProfile(models.Model):
         self.save() 
 
     def delete_profile(self):
-        self.delete() 
-
-    @classmethod
-    def search_user(cls,search_term):
-        users = cls.objects.filter(user__username = search_term)
-        return users    
+        self.delete()    
 
 class Business(models.Model):
     business_name = models.CharField(primary_key=True, max_length = 120)
@@ -47,6 +42,11 @@ class Business(models.Model):
 
     def delete_business(self):
         self.delete()
+
+    @classmethod
+    def search_business(cls,search_term):
+        business = cls.objects.filter(business_name = search_term)
+        return business     
 
 class Posts(models.Model):
     author = models.ForeignKey(User, on_delete  = models.CASCADE) 
