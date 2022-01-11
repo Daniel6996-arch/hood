@@ -1,5 +1,5 @@
 from django import forms
-from .models import NeighbourHood, Business
+from .models import NeighbourHood, Business, Posts
 
 class HoodForm(forms.ModelForm): 
 
@@ -12,3 +12,9 @@ class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
         exclude = ['user', 'uploaded_on']
+
+class PostForm(forms.ModelForm): 
+
+    class Meta:
+        model = Posts
+        exclude = ['author', 'created_on']        

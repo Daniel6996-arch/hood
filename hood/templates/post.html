@@ -4,7 +4,7 @@
 {% block content %}
 <h1>Hood businesses</h1>
 <div>
-    <button class="btn btn-outline info">Add Business</button>
+    <button class="btn btn-outline info">Add Post</button>
 </div>
 <div id="post1">
     <form class="form-horizontal form_middle" enctype='multipart/form-data' method="POST">
@@ -17,10 +17,9 @@
     </form>
 </div>
 
-{% for business in business %}
-<h3>{{ business.business_name }}</h3>
-<p>Posted by {{ business.business_user }} on {{ uploaded_on }}</p>
-<p>Business Email {{ business.business_email }}</p>
+{% for post in posts %}
+<h3>{{ post.body }}</h3>
+<p>Posted by {{ post.author }} on {{ created_on }}</p>
 {% endfor %}
 
 {% endblock %}

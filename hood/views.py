@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.models import User
-from .models import NeighbourHood, Business, UserProfile
-from .forms import HoodForm, BusinessForm
+from .models import NeighbourHood, Business, UserProfile, Posts
+from .forms import HoodForm, BusinessForm, PostForm
 from django.views.generic.edit import UpdateView, DeleteView
 # Create your views here.
 def index(request):
@@ -130,4 +130,37 @@ class ProfileEditView(UpdateView):
         return reverse_lazy('profile', kwargs={'pk':pk})
 
     def test_func(self):
-        profile = self.get_object()                  
+        profile = self.get_object()         
+
+class PostView(View):
+    def get(self, request):
+        posts = Posts.objects.all().order_by('-created_on')
+        form = PostForm()
+
+        context = {
+            'post':posts,
+            'form':form,
+        }
+
+        return render(request, 'post.html', context) 
+
+    def post(self, request):
+        posts = Posts.objects.all().order_by('-created_on')
+        form = PostForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.instance.user = User.objects.get(username=self.request.user)
+            new_post = form.save(commit = False)
+            new_post.author = request.user
+
+            if 'img' in request.FILES:
+                new_post.image = request.FILES['img']
+
+            new_post.save()   
+
+        context = {
+            'posts':posts,
+            'form':form,
+        }
+
+        return render(request, 'post.html', context)                 
