@@ -7,6 +7,9 @@ from django.views.generic.edit import UpdateView, DeleteView
 # Create your views here.
 def index(request):
     return render(request, 'index.html') 
+
+def contact(request):
+    return render(request, 'contact.html')     
     
 class HoodFormView(View):
     def get(self, request):
@@ -108,14 +111,14 @@ class BusinessView(View):
 
 class ProfileView(View):
     def get(self, request, pk):
-        profile = User.objects.get(pk=pk)
-        user = profile.username
-        #hood = NeighbourHood.objects.filter(hood_admin = profile).order_by('-uploaded_on')   
+        profile = UserProfile.objects.get(pk=pk)
+        user = profile.user
+        hood = NeighbourHood.objects.filter(hood_admin = profile).order_by('-uploaded_on')   
 
         context = {
             'user':user,
             'profile':profile,
-            #'hood':hood,
+            'hood':hood,
         }        
 
         return render(request, 'profile.html', context)     

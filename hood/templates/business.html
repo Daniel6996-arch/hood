@@ -8,9 +8,9 @@
     <button id="post" class="btn btn-outline info">Add Business</button>
 </div>
 
-<div class="kkk">
+<div class="d-flex flex-row">
     {% for business in business %}
-<div>
+<div class="padl">
     <h3>{{ business.business_name }}</h3>
     <p>Posted by {{ business.business_user }} on {{ uploaded_on }}</p>
     <p>Business Email {{ business.business_email }}</p>

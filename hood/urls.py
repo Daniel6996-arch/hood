@@ -12,4 +12,5 @@ urlpatterns = [
     url('^hood/form/', HoodFormView.as_view(), name='hood-form'),
     url('posts', PostView.as_view(), name='posts'),
     url('^search/',views.search,name='search'),
+    url('^rapid/contact', views.contact, name='contact'),
 ]
