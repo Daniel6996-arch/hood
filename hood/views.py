@@ -7,6 +7,7 @@ from django.views.generic.edit import UpdateView, DeleteView
 # Create your views here.
 def index(request):
     return render(request, 'index.html') 
+    
 
 class HoodView(View):
     def get(self, request):
