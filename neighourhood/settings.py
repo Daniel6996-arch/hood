@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'neighourhood.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nehood',
+        'NAME': 'yy',
         'USER': 'moringa',
         'PASSWORD': 'Access',
         'HOST': 'localhost',
@@ -143,4 +143,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL='/homepage/'
 
 #register
-REGISTER_REDIRECT_URL='/'
+REGISTER_REDIRECT_URL='/accounts/register'
