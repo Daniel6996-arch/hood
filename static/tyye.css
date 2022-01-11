@@ -1,0 +1,14 @@
+.kkk{
+    display: flex;
+    flex-direction: row;
+}
+body{
+    background-image: url(goodneighbour.jpg);
+}
+.align{
+    align-items: center;
+    margin-left: 30vw;
+}
+.margin-lef{
+    margin-right: 1vw;
+}

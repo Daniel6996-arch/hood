@@ -11,7 +11,7 @@ class BusinessForm(forms.ModelForm):
 
     class Meta:
         model = Business
-        exclude = ['user', 'uploaded_on']
+        exclude = ['hood','business_user', 'uploaded_on']
 
 class PostForm(forms.ModelForm): 
 

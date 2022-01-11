@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block styles %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{% static 'tyye.css' %}">
     {% endblock %}
     <title>Neighbourhood watch</title>
 </head>
-<body style="background-image: url(https://res.cloudinary.com/dante6996-arch/image/upload/v1639426154/t57ajdmveuf8xierhp4t.jpg);">
+<body>
    <div class="d-flex flex-column container">
         <div>
             <h1 class="text-center display-3">Welcome to your Neighbourhood, welcome to your Hood</h1>
@@ -18,8 +19,8 @@
         <div class="p-5">
             <p class="text-center">Get to be part of your neighbour loop and get to know more about your hood, the facilities available, the amenties available and even post your thoughts, ideas and interact with other neighbours<br> For over 2 years we have provided supreme services to our users like code analysis, code rating, website review and website rating</p>
         </div>
-        <div class="p-5">
-            <span><a href="accounts/login" class="btn btn-outline-success m-2">Login</a>/<a href="accounts/register/" class="btn btn-outline-primary m-2">Register</a></span>
+        <div class="">
+            <span class="align"><a href="accounts/login" class="btn btn-outline-success m-2">Login</a>/<a href="accounts/register/" class="btn btn-outline-primary m-2">Register</a></span>
         </div>
    </div>
 </body>
