@@ -89,7 +89,7 @@ cloudinary.config(
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'yyt',
+        'NAME': 'hood',
         'USER': 'moringa',
         'PASSWORD': 'Access',
         'HOST': 'localhost',
