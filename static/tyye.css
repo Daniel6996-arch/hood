@@ -10,7 +10,10 @@ body{
     margin-left: 30vw;
 }
 .margin-lef{
-    margin-right: 1vw;
+    margin-right: 0.7vw;
+    padding-top: 0vh;
+    padding-bottom: 0vh;
+    
 }
 .padl{
     margin-left: 3vw;

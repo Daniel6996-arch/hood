@@ -5,18 +5,9 @@
 {% block content %}
 <h1>Hood businesses</h1>
 <div>
-    <button class="btn btn-outline info">Add Business</button>
+    <button id="post" class="btn btn-outline info">Add Business</button>
 </div>
-<div id="post1">
-    <form class="form-horizontal form_middle" enctype='multipart/form-data' method="POST">
-        {% csrf_token %}
 
-        {% bootstrap_form form %}
-        <div class="form-group">
-            <input id="post2" type="submit" class="btn btn-primary btn-sm" value="Submit">
-          </div> 
-    </form>
-</div>
 <div class="kkk">
     {% for business in business %}
 <div>
@@ -26,6 +17,17 @@
 </div>
 
 {% endfor %}
+</div>
+
+<div id="post1">
+    <form class="form-horizontal form_middle" enctype='multipart/form-data' method="POST">
+        {% csrf_token %}
+
+        {% bootstrap_form form %}
+        <div class="form-group">
+            <input id="post2" type="submit" class="btn btn-primary btn-sm" value="Submit">
+          </div> 
+    </form>
 </div>
 
 

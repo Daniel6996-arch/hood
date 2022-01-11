@@ -4,19 +4,8 @@
 {% block content %}
 <h1>Hood Posts</h1>
 <div>
-    <button class="btn btn-outline info">Add Post</button>
+    <button d="post" class="btn btn-outline info">Add Post</button>
 </div>
-<div id="post1">
-    <form class="form-horizontal form_middle" enctype='multipart/form-data' method="POST">
-        {% csrf_token %}
-
-        {% bootstrap_form form %}
-        <div class="form-group">
-            <input id="post2" type="submit" class="btn btn-primary btn-sm" value="Submit">
-          </div> 
-    </form>
-</div>
-
 {% for post in posts %}
 <div class="p-3">
     {% if post_pic %}
@@ -31,5 +20,15 @@
 
 </div>
 {% endfor %}
+<div id="post1">
+    <form class="form-horizontal form_middle" enctype='multipart/form-data' method="POST">
+        {% csrf_token %}
+
+        {% bootstrap_form form %}
+        <div class="form-group">
+            <input id="post2" type="submit" class="btn btn-primary btn-sm" value="Submit">
+          </div> 
+    </form>
+</div>
 
 {% endblock %}
