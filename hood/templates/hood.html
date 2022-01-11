@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<div class="text-center">
 <h1 class="display-3">Welcome to the hood, Welcome to the Neighbourhood</h1>
 
 {% for hood in hood %}
@@ -12,5 +13,7 @@
 <h1>No hood available, please add your hood.</h1>
 {% endif %}
 {% endfor %}
-<span><a href="posts">View Posts</a><a  href="{% url 'business' %}">View Businesses</a></span>
+<span><a class="padl" href="posts">View Hood Posts</a><a  class="padl" href="{% url 'business' %}">View Hood Businesses</a></span>
+</div>
+
 {% endblock %}
