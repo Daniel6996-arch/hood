@@ -21,11 +21,13 @@
 <div class="p-3">
     {% if post_pic %}
     <img src="{{post_pic }}">
-    {% else %}
-    <img src="{{hood_pic}}">
-    {% endif %}
     <h3>{{ post.body }}</h3>
     <p>Posted by {{ post.author }} on {{ created_on }}</p>
+    {% else %}
+    <h3>{{ post.body }}</h3>
+    <p>Posted by {{ post.author }} on {{ created_on }}</p>
+    {% endif %}
+    
 
 </div>
 {% endfor %}
