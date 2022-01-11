@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
+from django.contrib.auth.models import User
 from .models import NeighbourHood, Business, UserProfile
 from .forms import HoodForm, BusinessForm
 from django.views.generic.edit import UpdateView, DeleteView
@@ -57,8 +58,9 @@ class BusinessView(View):
         form = BusinessForm(request.POST, request.FILES)
 
         if form.is_valid():
+            form.instance.user = User.objects.get(username=self.request.user)
             new_business = form.save(commit = False)
-            new_business.author = request.user
+            new_business.user = request.user
 
             if 'img' in request.FILES:
                 new_business.image = request.FILES['img']

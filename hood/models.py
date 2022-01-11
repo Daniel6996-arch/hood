@@ -13,14 +13,14 @@ class NeighbourHood(models.Model):
 
 
 class UserProfile(models.Model):
-    name = models.OneToOneField(User, verbose_name = 'user', related_name = 'profile', on_delete = models.CASCADE)
+    username = models.ForeignKey(User, verbose_name = 'user', related_name = 'profile', on_delete = models.CASCADE)
     id = models.IntegerField(primary_key = True, default=0)
     hood = models.ForeignKey(NeighbourHood, on_delete = models.CASCADE, default=0)   
     email = models.EmailField()
 
 class Business(models.Model):
     business_name = models.CharField(max_length = 120, primary_key = True)
-    user  = models.ForeignKey(User, on_delete = models.CASCADE)
+    username  = models.ForeignKey(User, on_delete = models.CASCADE)
     hood = models.ForeignKey(NeighbourHood, related_name = 'neighbourhood', on_delete = models.CASCADE, default=0)
     business_email = models.EmailField()
     uploaded_on = models.DateTimeField(auto_now_add=True)
