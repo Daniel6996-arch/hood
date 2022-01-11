@@ -2,7 +2,7 @@
 {% load bootstrap5 %}
 
 {% block content %}
-<h1>Hood businesses</h1>
+<h1>Hood Posts</h1>
 <div>
     <button class="btn btn-outline info">Add Post</button>
 </div>
@@ -18,8 +18,12 @@
 </div>
 
 {% for post in posts %}
-<h3>{{ post.body }}</h3>
-<p>Posted by {{ post.author }} on {{ created_on }}</p>
+<div class="p-3">
+   
+    <h3>{{ post.body }}</h3>
+    <p>Posted by {{ post.author }} on {{ created_on }}</p>
+
+</div>
 {% endfor %}
 
 {% endblock %}

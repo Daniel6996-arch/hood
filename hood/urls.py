@@ -11,4 +11,5 @@ urlpatterns = [
     url('^profile/edit/(?P<pk>\d+)/$', ProfileEditView.as_view(), name = 'profile-edit'),
     url('^hood/form/', HoodFormView.as_view(), name='hood-form'),
     url('posts', PostView.as_view(), name='posts'),
+    url('^search/',views.search,name='search'),
 ]
