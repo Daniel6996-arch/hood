@@ -21,7 +21,7 @@ class NeighbourHood(models.Model):
 
 
 class UserProfile(models.Model):
-    username = models.OneToOneField(User,primary_key = True,verbose_name = 'user', related_name = 'profile', on_delete = models.CASCADE)
+    user = models.OneToOneField(User,primary_key = True,verbose_name = 'user', related_name = 'profile', on_delete = models.CASCADE)
     #id = models.IntegerField(primary_key = True, default=0)
     hood = models.ForeignKey(NeighbourHood, on_delete = models.CASCADE, default=0)   
     email = models.EmailField()
