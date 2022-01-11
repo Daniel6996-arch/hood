@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'neighourhood.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'yy',
+        'NAME': 'yyt',
         'USER': 'moringa',
         'PASSWORD': 'Access',
         'HOST': 'localhost',
