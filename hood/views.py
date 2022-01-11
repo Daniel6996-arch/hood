@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from django.contrib.auth.models import User
 from .models import NeighbourHood, Business, UserProfile, Posts
 from .forms import HoodForm, BusinessForm, PostForm
+from django.contrib.auth.models import User
 from django.views.generic.edit import UpdateView, DeleteView
 # Create your views here.
 def index(request):
@@ -108,21 +108,21 @@ class BusinessView(View):
 
 class ProfileView(View):
     def get(self, request, pk):
-        profile = UserProfile.objects.get(pk=pk)
-        user = profile.user
-        hood = NeighbourHood.objects.filter(admin = user).order_by('-uploaded_on')   
+        profile = User.objects.get(pk=pk)
+        user = profile.username
+        #hood = NeighbourHood.objects.filter(hood_admin = profile).order_by('-uploaded_on')   
 
         context = {
             'user':user,
             'profile':profile,
-            'hood':hood,
+            #'hood':hood,
         }        
 
         return render(request, 'profile.html', context)     
 
 class ProfileEditView(UpdateView):
     model = UserProfile
-    fields = ['full_name', 'bio', 'profile_pic']
+    fields = ['full_name', 'bio']
     template_name = 'profile_edit.html'
 
     def get_success_url(self):
