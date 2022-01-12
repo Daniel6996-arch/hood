@@ -11,6 +11,7 @@
 <div class="d-flex flex-row">
     {% for business in business %}
 <div class="padl">
+    <img src="{{business.business_pic.url}}">
     <h3>{{ business.business_name }}</h3>
     <p>Posted by {{ business.business_user }} on {{ uploaded_on }}</p>
     <p>Business Email {{ business.business_email }}</p>

@@ -6,7 +6,7 @@ class HoodForm(forms.ModelForm):
 
     class Meta:
         model = NeighbourHood
-        exclude = ['admin', 'uploaded_on']
+        exclude = ['user', 'uploaded_on']
 
 class BusinessForm(forms.ModelForm): 
 

@@ -89,7 +89,7 @@ cloudinary.config(
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'chill',
+        'NAME': 'chil',
         'USER': 'moringa',
         'PASSWORD': 'Access',
         'HOST': 'localhost',
@@ -149,7 +149,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #login
-LOGIN_REDIRECT_URL='/homepage/'
+LOGIN_REDIRECT_URL='/hood/form/'
 
 #register
-REGISTER_REDIRECT_URL='/accounts/register'
+REGISTER_REDIRECT_URL='/'

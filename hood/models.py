@@ -2,12 +2,14 @@ from django.db import models
 import datetime as dt
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField  
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 # Create your models here.
 # Create your models here.
 class NeighbourHood(models.Model):
     hood_name = models.CharField(max_length = 60)
-    hood_admin = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     hood_location = models.CharField(max_length = 120)
     occupants_count = models.IntegerField()
     uploaded_on = models.DateTimeField(auto_now_add=True)
@@ -21,11 +23,27 @@ class NeighbourHood(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User,primary_key = True,verbose_name = 'user', related_name = 'profile', on_delete = models.CASCADE)
-    #id = models.IntegerField(primary_key = True, default=0)
-    hood = models.ForeignKey(NeighbourHood, on_delete = models.CASCADE, default=0)   
-    email = models.EmailField()
-    user_pic = CloudinaryField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile', null=True)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    username =  models.CharField(max_length=100)
+    profile_pic = CloudinaryField('image')
+    bio = models.TextField(max_length=250)
+    location = models.CharField(max_length=120)
+    neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.SET_NULL, null=True, blank=True)
+    mobile_number = models.IntegerField(blank=True, null=True)
+    email =  models.CharField(max_length=60) 
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            UserProfile.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
 
     def save_profile(self):
         self.save() 
@@ -39,7 +57,7 @@ class Business(models.Model):
     #hood = models.ForeignKey(NeighbourHood, related_name = 'neighbourhood', on_delete = models.CASCADE, default=0)
     business_email = models.EmailField()
     uploaded_on = models.DateTimeField(auto_now_add=True)
-    #business_pic = CloudinaryField()
+    business_pic = CloudinaryField()
 
     def save_business(self):
         self.save() 

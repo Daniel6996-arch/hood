@@ -3,6 +3,7 @@ from django.views import View
 from .models import NeighbourHood, Business, UserProfile, Posts
 from .forms import HoodForm, BusinessForm, PostForm
 from django.contrib.auth.models import User
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView
 # Create your views here.
 def index(request):
@@ -29,7 +30,7 @@ class HoodFormView(View):
 
         if form.is_valid():
             new_hood = form.save(commit = False)
-            new_hood.author = request.user
+            new_hood.user = request.user
 
             if 'img' in request.FILES:
                 new_hood.image = request.FILES['img']
@@ -41,7 +42,7 @@ class HoodFormView(View):
             'form':form,
         }
 
-        return render(request, 'hood_form.html', context)  
+        return render(request, 'hood.html', context)  
 
 class HoodView(View):
     def get(self, request):
@@ -113,19 +114,19 @@ class ProfileView(View):
     def get(self, request, pk):
         profile = UserProfile.objects.get(pk=pk)
         user = profile.user
-        hood = NeighbourHood.objects.filter(hood_admin = profile).order_by('-uploaded_on')   
+        #hood = NeighbourHood.objects.get(hood_admin = user).order_by('-uploaded_on')   
 
         context = {
             'user':user,
             'profile':profile,
-            'hood':hood,
+            #'hood':hood,
         }        
 
         return render(request, 'profile.html', context)     
 
-class ProfileEditView(UpdateView):
+class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
     model = UserProfile
-    fields = ['full_name', 'bio']
+    fields = ['first_name', 'last_name','username', 'neighbourhood', 'profile_pic','bio','email','location']
     template_name = 'profile_edit.html'
 
     def get_success_url(self):
@@ -133,7 +134,8 @@ class ProfileEditView(UpdateView):
         return reverse_lazy('profile', kwargs={'pk':pk})
 
     def test_func(self):
-        profile = self.get_object()         
+        profile = self.get_object()   
+        return self.request.user == profile.user      
 
 class PostView(View):
     def get(self, request):

@@ -7,7 +7,7 @@
 
 {% for hood in hood %}
 {% if hood %}
-<img src="{{ hood.hood_pic }}">
+<img src="{{ hood.hood_pic.url }}">
 <span><h1>{{ hood.hood_name }}</h1><p>Population {{ hood.occupants_count }}</p></span>
 <p>Last Updated {{ hood.uploaded_on }}</p>
 {% else %}
