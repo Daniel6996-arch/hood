@@ -15,6 +15,7 @@ import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7c$2*bg$d4588omd4z53_c)--mkrof=88!(+dg(mlzi&uwnzv^'
+SECRET_KEY = 'keepthesecretkeyusedinproductionsecret'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -153,3 +154,5 @@ LOGIN_REDIRECT_URL='/hood/form/'
 
 #register
 REGISTER_REDIRECT_URL='/'
+
+django_heroku.settings(locals())
