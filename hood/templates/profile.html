@@ -31,12 +31,31 @@
     {% for business in business %}
 
 <div class="border p-2">
-    <a href=""><img id="size" src="{{ business.business_name }}"></a>   
+    <p>{{ business.business_name}}</p>
+    <a href=""><img id="size" src="{{ business.business_pic.url }}"></a>   
     <p><a class="text-primary" style="text-decoration: none;" href="">@{{ business.user }}</a> on {{ business.uploaded_on }}</p>
-
+    <p>{{business.business_email}}</p>
 </div>
     
     {% endfor %}
+    <div>
+        <a href="{% url 'business' %}" class="btn btn-outline-info">Post Business</a>
+    </div>
+</div>
+
+<h1 class="border-bottom">Posts</h1>
+    {% for post in posts %}
+
+<div class="border p-2">
+    <a href=""><img id="size" src="{{ post.image.url }}"></a>   
+    <p>{{post.body}}</p>
+    <p><a class="text-primary" style="text-decoration: none;" href="">@{{ post.author }}</a> on {{ post.uploaded_on }}</p>
+</div>
+    
+    {% endfor %}
+    <div>
+        <a href="{% url 'business' %}" class="btn btn-outline-info">Post Business</a>
+    </div>
 </div>
 
 {% endblock %}

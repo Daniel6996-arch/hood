@@ -18,3 +18,18 @@ body{
 .padl{
     margin-left: 3vw;
 }
+.pwd{
+    padding: 0vh 10vw 0vh 10vw;
+    margin: 0vh 20vw 0vh 20vw;
+    width: 60vw;
+}
+.nad{
+    background-color: rgb(191, 181, 201);
+}
+#fle{
+    display: flex;
+    flex-direction: row;
+}
+#post1{
+    display: none;
+}

@@ -12,8 +12,8 @@
   {% endblock %}
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
-    <div class="container-fluid" id="nav-flex">
+    <nav class="navbar navbar-inverse nad">
+    <div class="container-fluid nae" id="nav-flex">
     <div class="navbar-header">
       <p class="navbar-brand" href=""><span class="display-5">Neighbourhood watch</span></p>
     </div>
@@ -24,7 +24,7 @@
         <form class="navbar-form" role="search" action="{% url 'search' %}">
 
         <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search User" name="user">
+        <input type="text" class="form-control" placeholder="Search Hood" name="user">
         <div class="input-group-btn">
         <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
         </div>
@@ -32,32 +32,33 @@
 
         </form>
     </div>
+  </div>    
 <!-- search form end -->
-    <div class="navbar">
-        <ul class="navbar-nav ms-auto d-flex flex-row justify-content-around" id="fle">
+    <div class="navbar d-flex flex-row pwd">
+        <ul class="navbar-nav ms-auto container" id="fle">
           <li class="nav-item">
-            <a id="nav0ne" class="nav-link active margin-lef" aria-current="page" href="{% url 'homepage' %}">Home</a>
+            <a id="nav0ne" class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a id="navTwo" class="nav-link active margin-lef" aria-current="page" href="{% url 'business' %}">Business</a>
+            <a id="navTwo" class="nav-link active" aria-current="page" href="{% url 'business' %}">Business</a>
           </li>
           <li class="nav-item">
-            <a id="navFour" class="nav-link active margin-lef" aria-current="page" href="{% url 'posts' %}">Posts</a>
+            <a id="navFour" class="nav-link active" aria-current="page" href="{% url 'posts' %}">Posts</a>
           </li>
           <li class="nav-item">
-            <a id="navFive" class="nav-link active margin-lef" aria-current="page" href="{% url 'contact' %}">Emergency</a>
+            <a id="navFive" class="nav-link active" aria-current="page" href="{% url 'contact' %}">Emergency</a>
           </li>
           <li class="nav-item">
-            <a id="navThree" class="nav-link active margin-lef" href="{% url 'profile' user.pk%}">Profile</a>
+            <a id="navThree" class="nav-link active" href="{% url 'profile' user.pk%}">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active btn btn-light margin-lef" href="{% url 'auth_logout' %}?next=/">logout</a>
+            <a class="nav-link active btn" href="{% url 'auth_logout' %}?next=/">logout</a>
           </li>
         </ul>
     </div>
     {% endif %}
    
-    </div>
+   
 </nav>
     {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
